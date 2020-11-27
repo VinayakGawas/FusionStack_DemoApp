@@ -10,7 +10,6 @@ namespace FusionStack_DemoApp.Models
     public class StudentInfo : BindableBase
     {
         private int _id;
-        [PrimaryKey]
         public int id
         {
             get { return _id; }

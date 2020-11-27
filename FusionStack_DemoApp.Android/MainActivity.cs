@@ -1,8 +1,10 @@
-﻿using Android.App;
+﻿using Acr.UserDialogs;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using Xamarin.Forms;
 
 namespace FusionStack_DemoApp.Droid
 {
@@ -16,7 +18,9 @@ namespace FusionStack_DemoApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-
+            UserDialogs.Init(this);
+            Forms.SetFlags("Expander_Experimental");
+            Xamarin.Forms.Forms.SetFlags("Brush_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App(new AndroidInitializer()));
         }

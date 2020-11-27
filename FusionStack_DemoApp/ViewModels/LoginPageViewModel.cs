@@ -1,6 +1,9 @@
-﻿using FusionStack_DemoApp.Helpers;
+﻿using Acr.UserDialogs;
+using FusionStack_DemoApp.Helpers;
 using FusionStack_DemoApp.Models;
 using FusionStack_DemoApp.Repo;
+using FusionStack_DemoApp.Views;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -9,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FusionStack_DemoApp.ViewModels
 {
@@ -31,25 +36,6 @@ namespace FusionStack_DemoApp.ViewModels
             _user.Password = "Fusion@123";
             LoginCommand = new DelegateCommand(Login);
         }
-        internal void CheckUser()
-        {
-            if (!string.IsNullOrEmpty(user.UserName))
-            {
-                if (user.UserName.ToLower() != "admin")
-                {
-                    var user = _userRepo.QueryTable().FirstOrDefault(x => x.UserName == _user.UserName);
-                    if (user != null)
-                    {
-                        // ExistingUser = user;
-                    }
-                    else
-                    {
-                        PageDialogService.DisplayAlertAsync("", "User does not exist please register to continue.", "OK");
-                    }
-                }
-            }
-        }
-       
 
         private async void Login()
         {
@@ -71,7 +57,7 @@ namespace FusionStack_DemoApp.ViewModels
                 App.CurrentUser.UserName = "admin@fusionstak.com";
                 if (Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
                 {
-
+                    UserDialogs.Instance.ShowLoading("Logging In",MaskType.Clear);
                     var jsonData = await Task.Run(() => JsonConvert.SerializeObject(_user));
                     try
                     {
@@ -86,10 +72,11 @@ namespace FusionStack_DemoApp.ViewModels
                         {
                             AppConstants.BearerToken = response1.tokenResult.token;
                             AppConstants.UserId = response1.userId;
-                            await NavigationService.NavigateAsync(nameof(HomePage));
+                            await NavigationService.NavigateAsync(nameof(DashboardPage));
                         }
                         else
                         {
+                            UserDialogs.Instance.HideLoading();
                             await PageDialogService.DisplayAlertAsync("Error!!!", "Please try again...!!", "OK");
                         }
                     }
@@ -98,15 +85,21 @@ namespace FusionStack_DemoApp.ViewModels
                         await PageDialogService.DisplayAlertAsync("Error!!!", "Please try again...!!", "OK" + e);
 
                     }
+                    finally 
+                    {
+                        UserDialogs.Instance.HideLoading();
+                    }
                 }
                 else
                 {
-                   await PageDialogService.DisplayAlertAsync("", "You are not connected to the internet, Please check your connectivity and try again.", "OK");
+                    UserDialogs.Instance.HideLoading();
+                    await PageDialogService.DisplayAlertAsync("", "You are not connected to the internet, Please check your connectivity and try again.", "OK");
                    return;
                 }
             }
             else
             {
+                UserDialogs.Instance.HideLoading();
                 await PageDialogService.DisplayAlertAsync("", "Wrong username and Password.", "OK");
                 return;
             }

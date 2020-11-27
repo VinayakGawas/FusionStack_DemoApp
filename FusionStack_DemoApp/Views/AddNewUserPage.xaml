@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="FusionStack_DemoApp.Views.AddNewUserPage"
+             Visual="Material"
+             xmlns:behavior="clr-namespace:FusionStack_DemoApp.Behavior"
+             Title="Add New User">
+    <StackLayout>
+        <Entry Placeholder="Enter First Name" Text="{Binding NewUser.firstName}"/>
+        <Entry Placeholder="Enter Last Name" Text="{Binding NewUser.lastName}"/>
+        <Entry Placeholder="Enter Phone Number" Text="{Binding NewUser.phoneNumber}" Keyboard="Telephone">
+            <Entry.Behaviors>
+                <behavior:MobileValidatorBehavior/>
+            </Entry.Behaviors>
+        </Entry>
+        <Entry Placeholder="Enter Email Id" Text="{Binding NewUser.email}" Keyboard="Email">
+            <Entry.Behaviors>
+                <behavior:EmailValidatorBehavior/>
+            </Entry.Behaviors>
+        </Entry>
+        <Entry Placeholder="Enter Address" Text="{Binding NewUser.address}"/>
+        <Entry Placeholder="Enter age" Keyboard="Numeric" Text="{Binding NewUser.age}"/>
+        <Button Text="Save User" Command="{Binding SaveUserCommand}"/>
+    </StackLayout>
+</ContentPage>

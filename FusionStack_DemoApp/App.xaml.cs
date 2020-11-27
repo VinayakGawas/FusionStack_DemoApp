@@ -25,9 +25,6 @@ namespace FusionStack_DemoApp
             DBHelper.CreateTables();
             App.CurrentUser = new User();
             await NavigationService.NavigateAsync("NavigationPage/LoginPage");
-
-            await NavigationService.NavigateAsync("app:///LoginPage");
-            //await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -40,6 +37,10 @@ namespace FusionStack_DemoApp
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<DashboardPage, DashboardPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddNewUserPage, AddNewUserPageViewModel>();
+            containerRegistry.RegisterForNavigation<OfflineUsersPage, OfflineUsersPageViewModel>();
+            containerRegistry.RegisterForNavigation<OnlineListPage, OnlineListPageViewModel>();
         }
     }
 }

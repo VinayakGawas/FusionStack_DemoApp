@@ -2,7 +2,7 @@
 using Prism;
 using Prism.Ioc;
 using UIKit;
-
+using Xamarin.Forms;
 
 namespace FusionStack_DemoApp.iOS
 {
@@ -23,7 +23,8 @@ namespace FusionStack_DemoApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
-
+            Forms.SetFlags("Expander_Experimental");
+            Xamarin.Forms.Forms.SetFlags("Brush_Experimental");
             return base.FinishedLaunching(app, options);
         }
     }

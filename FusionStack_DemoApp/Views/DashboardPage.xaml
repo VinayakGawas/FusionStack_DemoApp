@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="Dashboard"
+             NavigationPage.HasNavigationBar="True"
+              NavigationPage.HasBackButton="False"
+             Visual="Material"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOS:Page.UseSafeArea="True"
+             x:Class="FusionStack_DemoApp.Views.DashboardPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Command="{Binding LogoutCommand}"/>
+    </ContentPage.ToolbarItems>
+   
+    <Grid RowSpacing="20" Padding="20" ColumnSpacing="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Frame CornerRadius="10" Grid.Row="0" Grid.Column="0" Padding="0" IsClippedToBounds="True">
+            <Button Text="Create New User" HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand" Command="{Binding CreateNewUserCommand}"/>
+        </Frame>
+
+        <Frame CornerRadius="10" Grid.Row="0" Grid.Column="1" Padding="0" IsClippedToBounds="True">
+            <Button Text="Sync Data" HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand" Command="{Binding SyncDataCommand}"/>
+        </Frame>
+
+        <Frame CornerRadius="10" Grid.Row="1" Grid.Column="0" Padding="0"  IsClippedToBounds="True">
+            <Button Text="View Online Users" HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand" Command="{Binding NavigateToOnlineRecords}"/>
+        </Frame>
+
+        <Frame CornerRadius="10" Grid.Row="1" Grid.Column="1" Padding="0" IsClippedToBounds="True">
+            <Button Text="View Saved Users" HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand" Command="{Binding NavigateToSavedUsers}"/>
+        </Frame>
+    </Grid>
+    
+</ContentPage>

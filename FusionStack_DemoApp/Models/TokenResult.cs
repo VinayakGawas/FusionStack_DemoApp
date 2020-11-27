@@ -17,4 +17,10 @@ namespace FusionStack_DemoApp.Models
         public bool twoFactorRequired { get; set; }
         public string refreshToken { get; set; }
     }
+    public class ResponseModel
+    {
+        public bool success { get; set; }
+        public string message { get; set; }
+    }
+
 }

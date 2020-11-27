@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="FusionStack_DemoApp.Views.OnlineListPage"
+              Visual="Material"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOS:Page.UseSafeArea="True">
+    <StackLayout>
+        <StackLayout>
+            <ListView ItemsSource="{Binding AllStudentsList}" HasUnevenRows="True" SelectionMode="None"
+                      SeparatorColor="Transparent" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="10" Padding="0" CornerRadius="10"  BorderColor="#3700B3">
+                                <Expander CollapseAnimationEasing="{x:Static Easing.SpringIn}" ExpandAnimationEasing="{x:Static Easing.SpringOut}">
+                                    <Expander.Header>
+                                        <Grid BackgroundColor="#3700B3" Padding="20">
+                                            <Label Text="{Binding firstName}"
+                                                   TextColor="White"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   FontAttributes="Bold"
+                                                   FontSize="Medium" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding firstName}"/>
+                                                        <Span Text="  "/>
+                                                        <Span Text="{Binding lastName}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Image Source="downarrow.png" 
+                                                   HeightRequest="25"
+                                                   WidthRequest="25"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   HorizontalOptions="End">
+                                                <Image.Triggers>
+                                                    <DataTrigger TargetType="Image"
+                                                                 Binding="{Binding Source={RelativeSource AncestorType={x:Type Expander}}, Path=IsExpanded}"
+                                                                 Value="True">
+                                                        <Setter Property="Source" Value="uparrow.png" />
+                                                    </DataTrigger>
+                                                </Image.Triggers>
+                                            </Image>
+                                        </Grid>
+                                    </Expander.Header>
+                                    <Expander.ContentTemplate>
+                                        <DataTemplate>
+                                            <StackLayout Padding="15">
+                                                <StackLayout.Resources>
+                                                    <ResourceDictionary>
+                                                        <Style TargetType="Label" >
+                                                            <Setter Property="Margin" Value="2"/>
+                                                            <Setter Property="TextColor"  Value="Black"/>
+                                                        </Style>
+                                                    </ResourceDictionary>
+                                                </StackLayout.Resources>
+
+                                                <Label >
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Age : "  FontAttributes="Bold"/>
+                                                            <Span Text="{Binding age}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Email ID : "  FontAttributes="Bold"/>
+                                                            <Span Text="{Binding email}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Contact No. : "  FontAttributes="Bold"/>
+                                                            <Span Text="{Binding phoneNumber}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="Address : "  FontAttributes="Bold"/>
+                                                            <Span Text="{Binding address}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Button  Text="Save This User Data" Clicked="Button_Clicked"/>
+                                                <Button  Text="Edit" x:Name="EditButton" Clicked="EditButton_Clicked"/>
+                                                <Button Text="Delete" x:Name="DeleteButton" Clicked="DeleteButton_Clicked"/>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </Expander.ContentTemplate>
+                                </Expander>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

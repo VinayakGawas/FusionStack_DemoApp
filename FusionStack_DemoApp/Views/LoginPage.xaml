@@ -4,7 +4,6 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="FusionStack_DemoApp.Views.LoginPage"
-             BackgroundImageSource="bg.jpg"
              Title=""
               xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              iOS:Page.UseSafeArea="True"
