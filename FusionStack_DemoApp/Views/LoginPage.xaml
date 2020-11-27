@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="FusionStack_DemoApp.Views.LoginPage"
+             BackgroundImageSource="bg.jpg"
+             Title=""
+              xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOS:Page.UseSafeArea="True"
+             xmlns:behaviors="clr-namespace:FusionStack_DemoApp.Behavior"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#6200EE">
+        <Frame Margin="25"  VerticalOptions="CenterAndExpand">
+            <StackLayout>
+                <Label Text="Login " TextColor="#6200EE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="20"/>
+                <Entry Text="{Binding _user.UserName}" x:Name="UserNameEntry"
+                       PlaceholderColor="#3700b3"
+                       Placeholder="Enter Email ID" Margin="10">
+                    <Entry.Behaviors>
+                        <behaviors:EmailValidatorBehavior/>
+                    </Entry.Behaviors>
+                </Entry>
+                <Entry Text="{Binding _user.Password}" IsPassword="True" 
+                PlaceholderColor="#3700b3"
+               Placeholder="Enter Password" Margin="10"/>
+                <Button Text="Login" Command="{Binding LoginCommand}" HorizontalOptions="Center"
+                    BackgroundColor="#3700b3" TextColor="White"
+                    Margin="20"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+
+</ContentPage>
