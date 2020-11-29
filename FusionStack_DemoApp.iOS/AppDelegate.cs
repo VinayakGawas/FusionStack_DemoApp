@@ -21,10 +21,11 @@ namespace FusionStack_DemoApp.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Forms.SetFlags("Expander_Experimental");
+            Forms.SetFlags("Brush_Experimental");
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
-            Forms.SetFlags("Expander_Experimental");
-            Xamarin.Forms.Forms.SetFlags("Brush_Experimental");
             return base.FinishedLaunching(app, options);
         }
     }

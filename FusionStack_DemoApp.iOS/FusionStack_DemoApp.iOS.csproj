@@ -191,6 +191,8 @@
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default@2x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\downarrow.png" />
+    <BundleResource Include="Resources\uparrow.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -217,7 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FusionStack_DemoApp\FusionStack_DemoApp.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
+      <Project>{28E52E16-676A-4A89-8104-94DDCF0BC70B}</Project>
       <Name>FusionStack_DemoApp</Name>
     </ProjectReference>
   </ItemGroup>

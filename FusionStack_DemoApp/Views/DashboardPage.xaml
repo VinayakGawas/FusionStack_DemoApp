@@ -23,24 +23,38 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Frame CornerRadius="10" Grid.Row="0" Grid.Column="0" Padding="0" IsClippedToBounds="True">
-            <Button Text="Create New User" HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="FillAndExpand" Command="{Binding CreateNewUserCommand}"/>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <Style TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="White"/>
+                    <Setter Property="TextColor" Value="#3700b3"/>
+                    <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                     <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                    <Setter Property="FontAttributes" Value="Bold"/>
+                </Style>
+                <Style TargetType="Frame">
+                    
+                    <Setter Property="CornerRadius" Value="10"/>
+                     <Setter Property="Padding" Value="0"/>
+                    <Setter Property="IsClippedToBounds" Value="True"/>
+                    <Setter Property="BorderColor" Value="#3700b3"/>
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Frame CornerRadius="10"  Grid.Row="0" Grid.Column="0" Padding="0" IsClippedToBounds="True">
+            <Button Text="Create New User"  Command="{Binding CreateNewUserCommand}"/>
         </Frame>
 
         <Frame CornerRadius="10" Grid.Row="0" Grid.Column="1" Padding="0" IsClippedToBounds="True">
-            <Button Text="Sync Data" HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="FillAndExpand" Command="{Binding SyncDataCommand}"/>
+            <Button Text="Sync Data"  Command="{Binding SyncDataCommand}"/>
         </Frame>
 
         <Frame CornerRadius="10" Grid.Row="1" Grid.Column="0" Padding="0"  IsClippedToBounds="True">
-            <Button Text="View Online Users" HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="FillAndExpand" Command="{Binding NavigateToOnlineRecords}"/>
+            <Button Text="View Online Users" Command="{Binding NavigateToOnlineRecords}"/>
         </Frame>
 
-        <Frame CornerRadius="10" Grid.Row="1" Grid.Column="1" Padding="0" IsClippedToBounds="True">
-            <Button Text="View Saved Users" HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="FillAndExpand" Command="{Binding NavigateToSavedUsers}"/>
+        <Frame CornerRadius="10"  Grid.Row="1" Grid.Column="1" Padding="0" IsClippedToBounds="True">
+            <Button Text="View Saved Users" Command="{Binding NavigateToSavedUsers}"/>
         </Frame>
     </Grid>
     

@@ -17,6 +17,7 @@ namespace FusionStack_DemoApp
         public App(IPlatformInitializer initializer)
             : base(initializer)
         {
+            Device.SetFlags(new[] { "Expander_Experimental", "Brush_Experimental" });
         }
 
         protected override async void OnInitialized()
@@ -24,7 +25,9 @@ namespace FusionStack_DemoApp
             InitializeComponent();
             DBHelper.CreateTables();
             App.CurrentUser = new User();
+           
             await NavigationService.NavigateAsync("NavigationPage/LoginPage");
+           
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

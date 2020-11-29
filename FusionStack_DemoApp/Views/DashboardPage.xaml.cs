@@ -9,6 +9,8 @@ namespace FusionStack_DemoApp.Views
         public DashboardPage()
         {
             InitializeComponent();
+           
+
         }
         protected override bool OnBackButtonPressed()
         {
@@ -21,3 +23,4 @@ namespace FusionStack_DemoApp.Views
         }
     }
 }
+//3700B3
